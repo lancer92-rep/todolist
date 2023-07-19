@@ -9,18 +9,19 @@ const todosSlice = createSlice({
     initialState,
     reducers: {
         addTodo: (state, action) => {
-            let temp = { id: Math.random(), status: "todo", ...action.payload };
+            let temp = { id: state.todos.length, status: "todo", ...action.payload };
             state.todos.push( temp );
         },
-        editTodo: (state, action) => {
-            state.todos = [...action.payload];
-        },
         removeTodo: (state, action) => {
+            console.log(action.payload)
             state.todos = state.todos.filter(todo => todo.id !== action.payload);
+            state.todos.map((todo, i) => {
+                todo.id = i
+            })
         },
     },
 });
 
-export const { addTodo, removeTodo, editTodo } = todosSlice.actions;
+export const { addTodo, removeTodo } = todosSlice.actions;
 
 export default todosSlice.reducer;

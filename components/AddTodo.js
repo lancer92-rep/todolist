@@ -1,5 +1,5 @@
 import { Box, Button, TextField } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addTodo } from '@/src/reducers/todosSlice';
 import { useState } from 'react';
 
@@ -17,15 +17,14 @@ export default function AddTodo() {
       title: title=='' ? true : false,
       description: description=='' ? true : false,
       startdate: startdate=='' ? true : false,
-      duedate: duedate=='' || (startdate > duedate) ? true : false
+      duedate: duedate=='' ? true : false
     })
-    if(title == '' || description == '' || startdate == '' || duedate == '' || (startdate > duedate)) return;
+    if(title == '' || description == '' || startdate == '' || duedate == '') return;
     const data = {
-      id: Math.random(),
       title: title,
       description: description,
-      startdate: startdate.replace( /\-/g, "/" ),
-      duedate: duedate.replace( /\-/g, "/" ),
+      startdate: startdate,
+      duedate: duedate,
       createdat: new Date().toLocaleDateString()
     }
     dispath(addTodo(data));
@@ -44,8 +43,11 @@ export default function AddTodo() {
         required
         error={error.title}
         id="title"
-        label="Title"
+        label="Outlined"
         variant="outlined" 
+        InputLabelProps={{
+          shrink: true,
+        }}
         value={title}
         onChange={ e => setTitle(e.target.value) }
       />
@@ -53,8 +55,11 @@ export default function AddTodo() {
         required 
         error={error.description}
         id="description" 
-        label="Description" 
+        label="description" 
         variant="outlined" 
+        InputLabelProps={{
+          shrink: true,
+        }}
         value={description}
         onChange={ e => setDescription(e.target.value) }
       />

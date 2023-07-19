@@ -9,12 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@aldabil/react-scheduler": "^2.7.9",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.11.16",
-    "@mui/lab": "^5.0.0-alpha.130",
     "@mui/material": "^5.13.1",
     "@mui/styled-engine-sc": "^5.12.0",
     "@mui/x-data-grid": "^6.5.0",
@@ -28,8 +26,8 @@
     "next": "13.4.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-mui-scheduler": "^2.0.4",
     "react-redux": "^8.0.5",
-    "react-scheduler": "^0.1.0",
     "styled-components": "^5.3.10"
   }
 }
